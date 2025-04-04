@@ -7,8 +7,7 @@ using Model.Config;
 using UnityEngine;
 using Utilities;
 
-// эт еще один коммент
-// больше комментов
+// Heallovs was here
 
 namespace Controller
 {
