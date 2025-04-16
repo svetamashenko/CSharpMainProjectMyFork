@@ -37,7 +37,7 @@ namespace UnitBrains.Player
         protected override List<Vector2Int> SelectTargets()
         {
             List<Vector2Int> result = GetReachableTargets();
-            if (result.Count > 0)
+            if (result.Count > 1)
             {
                 Vector2Int nearestTarget = new Vector2Int();
                 float min = float.MaxValue;
