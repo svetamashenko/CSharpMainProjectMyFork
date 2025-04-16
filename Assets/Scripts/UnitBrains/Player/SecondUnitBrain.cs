@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Codice.CM.Client.Differences.Merge;
 using Model.Runtime.Projectiles;
+using PlasticGui;
 using UnityEngine;
 
 namespace UnitBrains.Player
@@ -35,16 +36,24 @@ namespace UnitBrains.Player
 
         protected override List<Vector2Int> SelectTargets()
         {
-            ///////////////////////////////////////
-            // Homework 1.4 (1st block, 4rd module)
-            ///////////////////////////////////////
             List<Vector2Int> result = GetReachableTargets();
-            while (result.Count > 1)
+            if (result.Count > 0)
             {
-                result.RemoveAt(result.Count - 1);
+                Vector2Int nearestTarget = new Vector2Int();
+                float min = float.MaxValue;
+                foreach (var target in result)
+                {
+                    float distance = DistanceToOwnBase(target);
+                    if (distance < min)
+                    {
+                        min = distance;
+                        nearestTarget = target;
+                    }
+                }
+                result.Clear();
+                result.Add(nearestTarget);
             }
             return result;
-            ///////////////////////////////////////
         }
 
         public override void Update(float deltaTime, float time)
